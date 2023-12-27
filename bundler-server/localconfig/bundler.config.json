@@ -1,0 +1,14 @@
+{
+  "gasFactor": "1",
+  "port": "3000",
+  "network": "https://rpc-evm-sidechain.xrpl.org",
+  "entryPoint": "0xE1B5Bd544fd88fedDdC2e5C62614bfECD053Eb14",
+  "beneficiary": "0xd21934eD8eAf27a67f0A70042Af50A1D6d195E81",
+  "minBalance": "1",
+  "mnemonic": "./localconfig/mnemonic.txt",
+  "maxBundleGas": 5e6,
+  "minStake": "1" ,
+  "minUnstakeDelay": 0 ,
+  "autoBundleInterval": 3,
+  "autoBundleMempoolSize": 10
+}

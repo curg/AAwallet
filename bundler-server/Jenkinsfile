@@ -24,8 +24,7 @@ pipeline {
         }
         stage("Build") {
         steps{
-            sh "cd bundler-server"
-            sh "docker buildx build -t aa-wallet ./"
+            sh "docker buildx build -t aa-wallet ./bundler-server"
         }
         }
         stage("RUN") {

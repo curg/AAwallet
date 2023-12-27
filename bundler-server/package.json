@@ -9,9 +9,6 @@
     "bundler": "ts-node ./src/exec.ts --config ./localconfig/bundler.config.json",
     "clear": "rm -rf dist artifacts cache src/types"
   },
-  "workspaces": [
-    "src/*"
-  ],
   "dependencies": {
     "@account-abstraction/contracts": "^0.6.0",
     "@ethersproject/abi": "^5.7.0",

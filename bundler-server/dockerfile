@@ -5,17 +5,10 @@ ENV APP_DIR=/app
 
 WORKDIR APP_DIR
 
-CMD ["pwd"]
-
-CMD ["ls", "-l"]
-
-
 ADD package*.json ./
 ADD . .
 
-RUN yarn install --network-timeout 1000000
-
-CMD ["yarn", "preprocess"]
+RUN yarn
 
 CMD ["yarn", "run", "bundler", "--unsafe"]
 

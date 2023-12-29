@@ -8,31 +8,31 @@ pipeline {
         steps{
             script {
             try {
-                sh "docker rmi -f aa-wallet:latest"
+                sh "docker rmi -f bundler-server:latest"
             } catch (err) {
-                echo "The image of aa-wallet is not defined"
+                echo "The image of bundler-server is not defined"
             }
             }
             script {
             try {
-                sh "docker rm -f aa-wallet"
+                sh "docker rm -f bundler-server"
             } catch (err) {
-                echo "aa-wallet is not defined"
+                echo "bundler-server is not defined"
             }
             }
         }
         }
         stage("Build") {
         steps{
-            sh "docker buildx build -t aa-wallet ./bundler-server"
+            sh "docker buildx build -t bundler-server ./bundler-server"
         }
         }
         stage("RUN") {
         steps {
             sh """docker run -d \
-                    --name aa-wallet \
+                    --name bundler-server \
                     -p 3000:3000 \
-                    aa-wallet:latest"""
+                    bundler-server:latest"""
         }
         }
     }

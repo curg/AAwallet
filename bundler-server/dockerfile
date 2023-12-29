@@ -5,8 +5,10 @@ ENV APP_DIR=/app
 
 WORKDIR APP_DIR
 
-ADD bundler-server/package*.json ./
-ADD bundler-server .
+ADD package*.json ./
+ADD . .
+
+RUN echo $(ls)
 
 RUN yarn install --network-timeout 1000000
 

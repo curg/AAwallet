@@ -10,8 +10,8 @@ ADD . .
 
 RUN echo $(ls)
 
-RUN yarn install --network-timeout 1000000
+RUN npm install
 
-CMD ["yarn", "run", "bundler", "--unsafe"]
+CMD ["npm", "run", "bundler", "--unsafe"]
 
 EXPOSE 3000

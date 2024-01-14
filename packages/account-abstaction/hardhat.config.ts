@@ -74,6 +74,11 @@ const config: HardhatUserConfig = {
     goerli: getNetwork("goerli"),
     sepolia: getNetwork("sepolia"),
     proxy: getNetwork1("http://localhost:8545"),
+    xrplSideChain: {
+      url: "https://rpc-evm-sidechain.xrpl.org",
+      chainId: 1440002,
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
+    },
   },
   mocha: {
     timeout: 10000,

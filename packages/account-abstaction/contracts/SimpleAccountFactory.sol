@@ -12,11 +12,11 @@ import "./SimpleAccount.sol";
  * The factory's createAccount returns the target account address even if it is already installed.
  * This way, the entryPoint.getSenderAddress() can be called either before or after the account is created.
  */
-contract SimpleAccountFactory {
-    SimpleAccount public immutable accountImplementation;
+contract TestSmartAccountFactory {
+    TestSmartAccount public immutable accountImplementation;
 
     constructor(IEntryPoint _entryPoint) {
-        accountImplementation = new SimpleAccount(_entryPoint);
+        accountImplementation = new TestSmartAccount(_entryPoint);
     }
 
     /**
@@ -28,17 +28,17 @@ contract SimpleAccountFactory {
     function createAccount(
         address owner,
         uint256 salt
-    ) public returns (SimpleAccount ret) {
+    ) public returns (TestSmartAccount ret) {
         address addr = getAddress(owner, salt);
         uint codeSize = addr.code.length;
         if (codeSize > 0) {
-            return SimpleAccount(payable(addr));
+            return TestSmartAccount(payable(addr));
         }
-        ret = SimpleAccount(
+        ret = TestSmartAccount(
             payable(
                 new ERC1967Proxy{ salt: bytes32(salt) }(
                     address(accountImplementation),
-                    abi.encodeCall(SimpleAccount.initialize, (owner))
+                    abi.encodeCall(TestSmartAccount.initialize, (owner))
                 )
             )
         );
@@ -59,7 +59,7 @@ contract SimpleAccountFactory {
                         type(ERC1967Proxy).creationCode,
                         abi.encode(
                             address(accountImplementation),
-                            abi.encodeCall(SimpleAccount.initialize, (owner))
+                            abi.encodeCall(TestSmartAccount.initialize, (owner))
                         )
                     )
                 )

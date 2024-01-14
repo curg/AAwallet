@@ -77,7 +77,9 @@ const config: HardhatUserConfig = {
     xrplSideChain: {
       url: "https://rpc-evm-sidechain.xrpl.org",
       chainId: 1440002,
-      accounts: [`0x${process.env.PRIVATE_KEY}`],
+      accounts: [
+        `0xdac8325ff3f4dd22bc3a1a897c07ff75525bd19a476953e9773b5f9ccf262e6e`,
+      ],
     },
   },
   mocha: {
